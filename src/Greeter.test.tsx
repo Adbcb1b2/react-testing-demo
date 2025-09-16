@@ -10,4 +10,19 @@ describe('Test the Greeter Class', () => {
         // Check the output against the expected value
         expect(greeting).toBe('Hello, John Doe');
     });
-})
+
+    // Check a default greeting is provided when no name is given
+    it('provides a default greeting when no name is given', () => {
+        const greeter = new Greeter();
+        const greeting = greeter.getGreeting();
+        expect(greeting).toBe('Hello, Anonymous');
+    });
+
+    // Example of testing an async method
+    it('Can generate a greeting asynchronously', async () => {
+        const greeter = new Greeter('John Doe');
+        const greeting = await greeter.getGreetingAsync();
+        expect(greeting).toBe('Hello, John Doe');
+    });
+
+});
