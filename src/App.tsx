@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import './App.css';
+import Greeter from './GreeterComponent';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default class App extends React.Component<{}, {userName: string }>{
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      userName: '',
+    }
+  }
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+  updateUserName = (event: any) => {
+    this.setState({
+      userName: event.target.value
+    })
+  }
+
+  clearName = (event: any) => {
+    this.setState({
+      userName: ''
+    })
+  }
+
+  render() {
+    return(
+      <div id='app'>
+        <h3>Input:</h3>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+          <label htmlFor='userName'>User Name</label>
+          <input type='text' id='userName' value={this.state.userName}
+          onChange={this.updateUserName}/></p>
+        <h3>Message:</h3>
+        <Greeter userName={this.state.userName}/>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
-export default App
+    )
+  }
+
+}
