@@ -9,6 +9,6 @@ describe("App Component Tests", () => {
         // Render the App component
         render(<App />);
         // Check that the text "count" (regex expression, case insensitive) is in the document
-        expect(screen.getByText(/count/i)).toBeInTheDocument()
+        expect(screen.getByText(/input/i)).toBeInTheDocument()
     })
 })

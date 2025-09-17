@@ -30,6 +30,7 @@ export default class App extends React.Component<{}, {userName: string }>{
           <label htmlFor='userName'>User Name</label>
           <input type='text' id='userName' value={this.state.userName}
           onChange={this.updateUserName}/></p>
+          <button onClick={this.clearName}>Clear Name</button>
         <h3>Message:</h3>
         <Greeter userName={this.state.userName}/>
       </div>
